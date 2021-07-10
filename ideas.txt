@@ -1,0 +1,23 @@
+Goals:
+    - predict the time (efficiently) it would take to mine _x_ amount of BTC
+    - efficiently: means minimize time and cost not just time
+
+To Dos:
+    - Coindesk btc price api
+    - Coindesk usd->cad api
+    - Read miner csv
+    - Read wattage csv
+    - Algo to determine best way to meet goals
+
+Implemenation:
+    - API (just get request), Interface called IParse ( implements parse())
+        - 2 childer classes, BTCPrice, Conversion extend API implement IParse
+
+    - CSV
+        - 2 children class -> read data into a 2d array or hashmap (1 class for MinerCSV 1 for WattageCSV)
+        - hashmap is like in python dict = {"columnname" = [1,2,3,4]}
+    - Miner
+        - takes user input for btc amount
+        - 1 function that just outputs how long it would take irrelevent of everything else (still outputs profit)
+        - initalizes the MinerCSV and reads data
+        - method to calcualte the most efficent (profit) way using wattage and miner csv to producte the btc amount
