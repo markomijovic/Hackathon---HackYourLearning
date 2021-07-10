@@ -20,15 +20,15 @@ public class CLI {
 
                 try {
                     btc_amount = Double.parseDouble(input);
+                    if (btc_amount <= 0) {
+                        System.out.println("Bitcoin quantity can't be equal to or less than 0.");
+                    }
                 }
                 catch (NumberFormatException n) {
                     System.out.println("Invalid Input. Only positive numerical entries are allowed.");
             }
 
-            if (btc_amount <= 0) {
-                System.out.println("Bitcoin quantity can equal to or less than 0.");
-            }
-            else {
+            if (btc_amount > 0){
                 break;
             }
         }
@@ -40,5 +40,6 @@ public class CLI {
         ProfitableMining t2 = cryptoMiner.efficientMiningTime();
         System.out.println(String.format("The most profitable time to mine %.2f BTC is %.2f days. This results in profit of $%.2f USD or $%.2f CAD", btc_amount, t2.getTime(), t2.getProfit()*t2.getTime(), ratio*t2.getProfit()*t2.getTime()));
         cryptoMiner.efficientMiningTime();
+        
     }
 }
