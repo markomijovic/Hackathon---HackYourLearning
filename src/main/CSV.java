@@ -3,11 +3,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/**
+ * Class to open and read csv data and save it to a 2D String array
+ */
 
 public class CSV {
     protected String filename;
-    protected String[][] csvData = new String[100][100];
+    protected String[][] csvData = new String[100][100]; //creating and initializing 2D array of 100x100
 
+    /**
+     * Reads the csv file and formats the data into a 2D string array with the outermost array being the columns,
+     * and the innermost array being the rows values.
+     * @param file -- String of filename
+     * @return csvData -- 2D String array representation of csv file
+     * @throws FileNotFoundException
+     */
     public String [][] readCSV(String file) throws FileNotFoundException{
         String row[]; // creating row array
         this.filename = file;
