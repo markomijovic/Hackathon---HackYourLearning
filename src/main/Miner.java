@@ -6,8 +6,8 @@ public class Miner {
 
     private double btc_amount; // total amount of btc we want to mine
     private int maximum_miners; // total number of miners if user has a limit
-    private double btc_price; // price of the btc in USD
-    private double btc_can_price; // price of the btc in CAN
+    public double btc_price; // price of the btc in USD
+    public double btc_can_price; // price of the btc in CAN
     private MinerCSV miner_csv; // miner information from the csv file
     private WattageCSV wattage_csv; // wattage cost information from the csv file
 

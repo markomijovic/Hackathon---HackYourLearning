@@ -13,7 +13,6 @@ public class CLI {
         Scanner scanner = new Scanner(System.in);
         double btc_amount = 0;
         boolean invalidInput = true;
-        double cad_usd_ratio = 1.24;
         // Validate user input
         while (invalidInput) {
             System.out.print("Enter a quantity of Bitcoin: ");
@@ -35,10 +34,11 @@ public class CLI {
         }
         scanner.close();
         Miner cryptoMiner = new Miner(btc_amount);
+        double ratio = cryptoMiner.btc_can_price / cryptoMiner.btc_price;
         double fastestTime = cryptoMiner.fastestMiningTime();
         System.out.println(String.format("The fastest time to mine %.2f BTC is %.2f days.", btc_amount, fastestTime));
         ProfitableMining t2 = cryptoMiner.efficientMiningTime();
-        System.out.println(String.format("The most profitable time to mine %.2f BTC is %.2f days. This results in profit of $%.2f USD or $%.2f CAD", btc_amount, t2.getTime(), t2.getProfit()*t2.getTime(), cad_usd_ratio*t2.getProfit()*t2.getTime()));
+        System.out.println(String.format("The most profitable time to mine %.2f BTC is %.2f days. This results in profit of $%.2f USD or $%.2f CAD", btc_amount, t2.getTime(), t2.getProfit()*t2.getTime(), ratio*t2.getProfit()*t2.getTime()));
         cryptoMiner.efficientMiningTime();
     }
 }
