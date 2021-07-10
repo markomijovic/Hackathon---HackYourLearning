@@ -10,6 +10,12 @@ public class API {
 
     private String urlLink;
     private String jsonText;
+    
+    public API(String link) {
+    	
+    	urlLink = link;
+    	
+    }
 
     public String getJSON() {
 
@@ -19,7 +25,7 @@ public class API {
             // https://api.coindesk.com/v1/bpi/currentprice/CAD.json
             // https://api.coindesk.com/v1/bpi/currentprice.json
 
-            urlLink = "https://api.coindesk.com/v1/bpi/currentprice.json";
+            //urlLink = "https://api.coindesk.com/v1/bpi/currentprice/CAD.json";
 
             URL url = new URL(urlLink);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection(); // Casting connection to open URL to HTTP object (required to process requests)
@@ -39,10 +45,11 @@ public class API {
                 else {
 
                     //StringBuffer jsonStringBuf = new StringBuffer();
-                    String jsonText = "";
+                    jsonText = "";
                     Scanner scanner = new Scanner(url.openStream());
 
                     while (scanner.hasNext()) {
+
                         jsonText += scanner.nextLine(); // String concatenation - refactor with a stringbuffer/builder to optimize memory
 
 
@@ -66,18 +73,5 @@ public class API {
 
         return jsonText;
     }
-
-
-    public static void main(String[] args) {
-        API test = new API();
-
-        String testJSON = test.getJSON();
-        System.out.println(testJSON);
-
-
-
-
-    }
-
 
 }
